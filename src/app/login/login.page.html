@@ -1,0 +1,34 @@
+<ion-content>
+  <ion-row align-items-center style="height: 100%">
+    <ion-col size="10" offset="1">
+      <div id="login-box" style="margin: auto">
+        <form #myFrom="ngForm" (ngSubmit)="loginCheck(myFrom)">
+          <ion-item>
+            <ion-input
+                    placeholder="请输入用户名"
+                    name="username"
+                    ngModel
+                    type="text"
+                    (focusout)="isValid(myFrom)"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+                    name="password"
+                    placeholder="请输入密码"
+                    ngModel
+                    type="password"
+
+                    (focusout)="isValid(myFrom)"></ion-input>
+          </ion-item>
+          <ion-button shape="round" size="large" color="primary" expand="full" type="submit" [disabled]="!valid">登   录</ion-button>
+        </form>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<ion-tab-bar>
+  <a routerLink="register">
+    <ion-button color="write" expand="full" type="submit"><span style="color: black">还没有账户？点此注册</span>
+    </ion-button></a>
+</ion-tab-bar>
