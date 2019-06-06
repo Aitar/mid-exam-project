@@ -1,3 +1,7 @@
-<p>
-  review works!
-</p>
+<p>{{curWord.en}}</p>
+<ion-button expand="full" fill="outline" color="medium" (click)="isRight(currentWords[0])">{{currentWords[0].zh}}</ion-button>
+<ion-button expand="full" fill="outline" color="medium" (click)="isRight(currentWords[1])">{{currentWords[1].zh}}</ion-button>
+<ion-button expand="full" fill="outline" color="medium" (click)="isRight(currentWords[2])">{{currentWords[2].zh}}</ion-button>
+<ion-button expand="full" fill="outline" color="medium" (click)="isRight(currentWords[3])">{{currentWords[3].zh}}</ion-button>
+
+<ion-button (click)="next()">next</ion-button>
