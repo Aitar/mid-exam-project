@@ -1,3 +1,27 @@
-<p>
-    info-edit works!
-</p>
+<Navbar [leftContent]="'返回'" (onLeftClick)="onLeftClick()">编辑信息</Navbar>
+<WhiteSpace ></WhiteSpace>
+<WhiteSpace ></WhiteSpace>
+<InputItem [placeholder]="''" [(ngModel)]="nickname">
+    <span>昵称</span>
+</InputItem>
+<ListItem
+        Picker
+        [extra]="gender"
+        [arrow]="'horizontal'"
+        [data]="singleArea"
+        [(ngModel)]="gender"
+        (ngModelChange)="onOk3($event)"
+>
+    性别
+</ListItem>
+
+<InputItem [placeholder]="'不填代表不修改密码'" [(ngModel)]="oldPassword">
+    <span>旧密码</span>
+</InputItem>
+<InputItem [placeholder]="'不填代表不修改密码'" [(ngModel)]="newPassword">
+    <span>新密码</span>
+</InputItem>
+<WhiteSpace ></WhiteSpace>
+<WhiteSpace ></WhiteSpace>
+<div Button (onClick)="submit()">提交修改</div>
+

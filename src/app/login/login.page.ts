@@ -28,13 +28,12 @@ export class LoginPage implements OnInit {
     console.log(form);
     if (this.valid) {
       let request = {
-        grant_type: "password",
-        username: form.value.username,
-        password: form.value.password
+        "username": form.value.username,
+        "password": form.value.password
       };
       console.log(request);
-      this.http.post("http://114.116.36.131/api/auth2/token", request
-      ).subscribe(
+      this.http.post("http://localhost:8088/untitled2_war_exploded/user", request)
+          .subscribe(
           (data : any) =>{
             console.log(data.access_token);
             this.router.navigateByUrl("user");

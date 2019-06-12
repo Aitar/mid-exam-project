@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      我
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<WhiteSpace ></WhiteSpace>
+<WhiteSpace ></WhiteSpace>
+<List [className]="'my-list'">
+  <ion-item (click)="changeAvater()">
+    <ion-avatar slot="start">
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-avatar>
+  </ion-item>
+  <ListItem [extra]="'昵称'" [arrow]="'horizontal'" (onClick)="onClick()">{{user.nickname}}</ListItem>
+  <ListItem [extra]="'性别'" [arrow]="'horizontal'" (onClick)="onClick()">{{user.gender}}</ListItem>
+  <ListItem [extra]="'用户名'">{{user.username}}</ListItem>
+  <WhiteSpace ></WhiteSpace>
+  <WhiteSpace ></WhiteSpace>
+  <div Button (onClick)="onClick()">修改密码</div>
+  <WhiteSpace ></WhiteSpace>
+  <WhiteSpace ></WhiteSpace>
+  <div Button (onClick)="exit()" [type]="'warning'">退出登录</div>
+</List>
+

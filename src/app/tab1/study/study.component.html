@@ -1,4 +1,9 @@
-<p>{{curWord.en}}</p>
-<ion-button expand="full" fill="outline" color="medium" (click)="isKnow(true)">认识</ion-button>
-<ion-button expand="full" fill="outline" color="medium" (click)="isKnow(false)">不认识</ion-button>
 
+
+<ion-content>
+    <ion-grid>
+        <ion-row><p>{{curWord.en}}</p></ion-row>
+        <ion-row><div Button [type]="'ghost'" [inline]="true" (click)="isKnow(true)">认识</div></ion-row>
+        <ion-row><div Button [type]="'ghost'" [inline]="true" (click)="isKnow(false)">不认识</div></ion-row>
+    </ion-grid>
+</ion-content>
