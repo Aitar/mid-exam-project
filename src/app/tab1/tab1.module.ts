@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import {NgZorroAntdMobileModule} from 'ng-zorro-antd-mobile';
+import {StudyComponent} from './study/study.component';
+import {ReviewComponent} from './review/review.component';
 
 @NgModule({
     imports: [
@@ -13,12 +15,15 @@ import {NgZorroAntdMobileModule} from 'ng-zorro-antd-mobile';
         FormsModule,
         RouterModule.forChild([
             { path: '', component: Tab1Page },
+            { path: 'study', component: StudyComponent },
+            { path: 'review', component: ReviewComponent}
         ]),
         NgZorroAntdMobileModule
     ],
   declarations: [
       Tab1Page,
-
+      StudyComponent,
+      ReviewComponent
   ]
 })
 export class Tab1PageModule {}

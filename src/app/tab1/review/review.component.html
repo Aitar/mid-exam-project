@@ -1,7 +1,32 @@
-<p>{{curWord.en}}</p>
-<ion-button expand="full" fill="outline" color="medium" (click)="isRight(currentWords[0])">{{currentWords[0].zh}}</ion-button>
-<ion-button expand="full" fill="outline" color="medium" (click)="isRight(currentWords[1])">{{currentWords[1].zh}}</ion-button>
-<ion-button expand="full" fill="outline" color="medium" (click)="isRight(currentWords[2])">{{currentWords[2].zh}}</ion-button>
-<ion-button expand="full" fill="outline" color="medium" (click)="isRight(currentWords[3])">{{currentWords[3].zh}}</ion-button>
+<!--页头-->
+<Navbar [icon]="icon"
 
-<ion-button (click)="next()">next</ion-button>
+        [mode]="'light'"
+        (onLeftClick)="onLeftClick()"
+>
+    {{preWord.en}} {{preWord.zh}}
+</Navbar>
+
+
+<ng-template #icon>
+    <Icon [type]="'left'"></Icon>
+</ng-template>
+
+<ion-content>
+    <WhiteSpace [size]="'xl'"></WhiteSpace><WhiteSpace [size]="'xl'"></WhiteSpace>
+    <ion-grid style="height: 90%">
+        <ion-row style="height: 30%"><ion-col size="12" style="text-align: center; ">
+            <h1>{{curWord.en}}</h1></ion-col>
+            <ion-row [hidden]="!showZH"><ion-col size="12" style="text-align: center;"><h3 style="text-align: center; ">{{curWord.zh}}</h3></ion-col> </ion-row>
+        </ion-row>
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+        <ion-row [hidden]="showZH"><ion-col size="12"><div Button [type]="'ghost'" [inline]="true" (click)="isRight(currentWords[0])" style="width: 100%">{{currentWords[0].zh}}</div></ion-col></ion-row>
+        <WhiteSpace ></WhiteSpace>
+        <ion-row [hidden]="showZH"><ion-col size="12"><div Button [type]="'ghost'" [inline]="true" (click)="isRight(currentWords[1])" style="width: 100%">{{currentWords[1].zh}}</div></ion-col></ion-row>
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+        <ion-row [hidden]="showZH"><ion-col size="12"><div Button [type]="'ghost'" [inline]="true" (click)="isRight(currentWords[2])" style="width: 100%">{{currentWords[2].zh}}</div></ion-col></ion-row>
+        <WhiteSpace ></WhiteSpace>
+        <ion-row [hidden]="showZH"><ion-col size="12"><div Button [type]="'ghost'" [inline]="true" (click)="isRight(currentWords[3])" style="width: 100%">{{currentWords[3].zh}}</div></ion-col></ion-row>
+        <ion-row [hidden]="!showZH"><div Button [type]="'ghost'" [inline]="true" (click)="next()" style="width: 100%">下一个</div></ion-row>
+    </ion-grid>
+</ion-content>

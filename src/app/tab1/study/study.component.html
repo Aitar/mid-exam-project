@@ -1,9 +1,26 @@
+<Navbar [icon]="icon"
 
+        [mode]="'light'"
+        (onLeftClick)="onLeftClick()"
+>
+    {{preWord.en}} {{preWord.zh}}
+</Navbar>
+<ng-template #icon>
+    <Icon [type]="'left'"></Icon>
+</ng-template>
 
 <ion-content>
-    <ion-grid>
-        <ion-row><p>{{curWord.en}}</p></ion-row>
-        <ion-row><div Button [type]="'ghost'" [inline]="true" (click)="isKnow(true)">认识</div></ion-row>
-        <ion-row><div Button [type]="'ghost'" [inline]="true" (click)="isKnow(false)">不认识</div></ion-row>
+    <WhiteSpace [size]="'xl'"></WhiteSpace><WhiteSpace [size]="'xl'"></WhiteSpace><WhiteSpace [size]="'xl'"></WhiteSpace><WhiteSpace [size]="'xl'"></WhiteSpace>
+    <ion-grid style="height: 90%">
+        <ion-row style="height: 30%"><ion-col size="12" style="text-align: center; ">
+            <h1>{{curWord.en}}</h1></ion-col>
+            <ion-row [hidden]="!showZH"><ion-col size="12" style="text-align: center;"><h3 style="text-align: center; ">{{curWord.zh}}</h3></ion-col> </ion-row>
+        </ion-row>
+        <WhiteSpace [size]="'xl'"></WhiteSpace>
+        <ion-row [hidden]="showZH"><ion-col size="12"><div Button [type]="'ghost'" [inline]="true" (click)="isKnow(true)" style="width: 100%">认 识</div></ion-col></ion-row>
+        <WhiteSpace ></WhiteSpace>
+        <ion-row [hidden]="showZH"><ion-col size="12"><div Button [type]="'ghost'" [inline]="true" (click)="isKnow(false)" style="width: 100%">不认识</div></ion-col></ion-row>
+
+        <ion-row [hidden]="!showZH"><div Button [type]="'ghost'" [inline]="true" (click)="next()" style="width: 100%">下一个</div></ion-row>
     </ion-grid>
 </ion-content>

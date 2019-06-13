@@ -1,33 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <a routerLink=""><ion-icon name="arrow-back"></ion-icon><ion-title>注册</ion-title></a>
-  </ion-toolbar>
-</ion-header>
-
+<Navbar [leftContent]="'返回'" (onLeftClick)="onLeftClick()">注册</Navbar>
 <ion-content>
-  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-    <ion-item><input
-            name="username"
-            required
-            ngModel
-            placeholder="邮箱(此邮箱将作为你的登录账号)"
-            type="text"
-            (focusout)="isValid(registerForm)"></ion-item>
-    <ion-item><input
-            placeholder="密码"
-            ngModel
-            required
-            name="password"
-            type="password"
-            (focusout)="isValid(registerForm)"></ion-item>
-    <ion-item><input
-            name="nickname"
-            required
-            ngModel
-            placeholder="昵称"
-            type="text"
-            (focusout)="isValid(registerForm)"
-    ></ion-item>
-    <ion-button color="primary" type="submit" expand="full" [disabled]="!valid">注册</ion-button>
-  </form>
+
+  <WhiteSpace ></WhiteSpace>
+  <WhiteSpace ></WhiteSpace>
+  <InputItem [placeholder]="" [(ngModel)]="username">
+    <span>邮箱</span>
+  </InputItem>
+  <InputItem [placeholder]="''" [(ngModel)]="nickname">
+    <span>昵称</span>
+  </InputItem>
+  <ListItem
+          Picker
+          [extra]="gender"
+          [arrow]="'horizontal'"
+          [data]="singleArea"
+          [(ngModel)]="gender"
+          (ngModelChange)="onOk3($event)"
+  >
+    性别
+  </ListItem>
+
+  <InputItem [placeholder]="" [(ngModel)]="password">
+    <span>密码</span>
+  </InputItem>
+  <WhiteSpace ></WhiteSpace>
+  <WhiteSpace ></WhiteSpace>
+  <div Button (onClick)="register()">注册</div>
 </ion-content>

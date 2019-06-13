@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { RegisterPage } from './register.page';
 import {HttpClientModule} from '@angular/common/http';
+import {NgZorroAntdMobileModule} from 'ng-zorro-antd-mobile';
 
 const routes: Routes = [
   {
@@ -16,13 +17,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    HttpClientModule,
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
+    imports: [
+        HttpClientModule,
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes),
+        NgZorroAntdMobileModule
+    ],
   declarations: [RegisterPage]
 })
 export class RegisterPageModule {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Word} from '../../../assets/entity/Word';
 import {mockWords} from '../../../assets/mock-data/mock-words';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-review',
@@ -11,18 +12,22 @@ export class ReviewComponent implements OnInit {
 
   words: Word[] = []; //将要学习的单词数组
   currentWords: Word[] = []; //当前学习的单词与三个错误单词
-  curWord: Word;
+  curWord: Word;              //当前正在复习的单词
+  preWord: Word = new Word(); //上一个复习的单词
   studied: number = 0; //已学习的单词数量
+  showZH: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   /**
    * 进入下一个单词的学习的方法
    */
   next(){
+    this.preWord = this.curWord;
     this.studied++;
     this.currentWords = this.getStudyWords(this.studied);
     console.log(this.currentWords);
+    this.showZH = false;
   }
 
   /**
@@ -90,8 +95,16 @@ export class ReviewComponent implements OnInit {
   }
 
   isRight(word: Word){
-    if(word != this.curWord)  this.curWord.wrongTime++;
+    console.log("current: " + this.curWord.en);
+    console.log("input: "+ word.en);
+    if(word.en != this.curWord.en) {
+      //如果错误那么错次+1
+      this.curWord.wrongTime++;
+      console.log("wrong");
+      this.showZH = true;
+    }
     else {
+      console.log("correct");
       this.curWord.wrongTime--;
 
       //学习完成后从需要复习的单词列表中删除这个单词
@@ -100,12 +113,19 @@ export class ReviewComponent implements OnInit {
         this.words.splice(this.words.indexOf(this.curWord), 1);
         console.log(this.words);
       }
+      this.next();
     }
-    this.next();
   }
+
+  onLeftClick() {
+    this.router.navigateByUrl("user/tabs/tab1");
+  }
+
   ngOnInit() {
     this.words = mockWords;
     this.currentWords = this.getStudyWords(this.studied);
+    this.preWord.en = "";
+    this.preWord.zh = "";
     console.log(this.currentWords);
   }
 

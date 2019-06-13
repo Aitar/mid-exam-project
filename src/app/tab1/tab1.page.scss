@@ -2,3 +2,23 @@
   max-height: 35vh;
   overflow: hidden;
 }
+ion-col{
+  text-align: center
+}
+ion-row{
+  text-align: center
+}
+
+h1{
+  margin: 0;
+}
+
+.show-info {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+}
+.show-info .progress {
+  margin-right: 5px;
+  width: 100%;
+}

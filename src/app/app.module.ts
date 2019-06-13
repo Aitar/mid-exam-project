@@ -13,15 +13,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 import {InfoEditComponent} from './tab3/info-edit/info-edit.component';
-import {StudyComponent} from './tab1/study/study.component';
-import {ReviewComponent} from './tab1/review/review.component';
 
 @NgModule({
   declarations: [
       AppComponent,
     InfoEditComponent,
-    StudyComponent,
-    ReviewComponent],
+  ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, FormsModule, HttpClientModule, NgZorroAntdMobileModule],
   providers: [
