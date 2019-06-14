@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {generate} from 'rxjs';
 import {ModalService, ToastService} from 'ng-zorro-antd-mobile';
+import {DataService} from '../../data.service';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -18,7 +20,12 @@ export class InfoEditComponent implements OnInit {
 
 
 
-  constructor(private router: Router, private _modal: ModalService, private _toast: ToastService) { }
+  constructor(private router: Router,
+              private _modal: ModalService,
+              private _toast: ToastService,
+              private dataService: DataService,
+              private http: HttpClient
+  ) { }
 
   ngOnInit() {
     console.log(this.nickname);
@@ -57,6 +64,6 @@ export class InfoEditComponent implements OnInit {
   }
 
   submit() {
-    console.log("提交修改");
+    this.http.post()
   }
 }

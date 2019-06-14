@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../assets/entity/User';
 import {Router} from '@angular/router';
+import {DataService} from '../../data.service';
 
 @Component({
   selector: 'app-info',
@@ -9,19 +10,12 @@ import {Router} from '@angular/router';
 })
 export class InfoComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   ngOnInit() {}
 
   //测试数据
-  user: User =     {
-    username: '593939245@qq.com',
-    password: 'huang980518',
-    nickname: '芒果西米露',
-    lastLogin: '2019-6-12 14:18',
-    wNumPerD: 25,
-    gender: '男'
-  };
+  user: User = this.dataService.currUser;
 
 
 

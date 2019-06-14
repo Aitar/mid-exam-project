@@ -1,3 +1,4 @@
+{{this.userService.currUser.username}}
 <ion-content>
     <ion-grid style="width: 100%">
         <ion-row id="avatar">
@@ -13,7 +14,7 @@
                 <WhiteSpace [size]="'xl'"></WhiteSpace>
                 <WhiteSpace [size]="'xl'"></WhiteSpace>
                 <ion-row><ion-col size="6">剩余</ion-col><ion-col size="6">今日单词</ion-col></ion-row>
-                <ion-row><ion-col size="6"><h1>44天</h1></ion-col><ion-col size="6"><h1>100个</h1></ion-col></ion-row>
+                <ion-row><ion-col size="6"><h1>44天</h1></ion-col><ion-col size="6"><h1>{{this.userService.currUser.wNumPerD}}个</h1></ion-col></ion-row>
                 <WhiteSpace [size]="'xl'"></WhiteSpace>
                 <ion-row><ion-col size="4">四级词汇</ion-col><ion-col size="4"></ion-col><ion-col size="4">修改计划</ion-col></ion-row>
                 <ion-row><ion-col size="1"></ion-col><ion-col size="10" style="border-bottom: 1px gainsboro solid;"></ion-col></ion-row>

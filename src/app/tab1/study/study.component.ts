@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Word} from '../../../assets/entity/Word';
-import {mockWords} from '../../../assets/mock-data/mock-words';
 import {Router} from '@angular/router';
+import {DataService} from '../../data.service';
 
 @Component({
   selector: 'app-study',
@@ -11,18 +11,18 @@ import {Router} from '@angular/router';
 export class StudyComponent implements OnInit {
   words: Word[] = []; //将要学习的单词数组
   curWord: Word;
-  preWord: Word = new Word();
+  preWord: Word = new Word(0,"","",0);
   studied: number = 0; //已学习的单词数量
   showZH: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private dataService: DataService) { }
 
   /**
    * 根据用户是否知道这个单词来确定复习的次数，并跳转到下一个单词
    * @param isknow
    */
   isKnow(isknow: boolean){
-    if(this.studied == 5)   //测试代码，当等于5时跳转到复习页面
+    if(this.studied == this.dataService.currUser.wNumPerD)   //当等于用户每天需要学习的单词数量时时跳转到复习页面
       this.router.navigateByUrl("user/tabs/tab1/review");
     if(!isknow)
       this.curWord.wrongTime+=2;
@@ -44,11 +44,9 @@ export class StudyComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.words = mockWords;
+    this.words = this.dataService.currWords;
+    console.log(this.words);
     this.curWord = this.words[0];
-    this.preWord.en = "";
-    this.preWord.zh = "";
-    console.log(this.preWord);
   }
 
     onLeftClick() {

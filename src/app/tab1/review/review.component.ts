@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Word} from '../../../assets/entity/Word';
-import {mockWords} from '../../../assets/mock-data/mock-words';
 import {Router} from '@angular/router';
+import {DataService} from '../../data.service';
 
 @Component({
   selector: 'app-review',
@@ -13,11 +13,11 @@ export class ReviewComponent implements OnInit {
   words: Word[] = []; //将要学习的单词数组
   currentWords: Word[] = []; //当前学习的单词与三个错误单词
   curWord: Word;              //当前正在复习的单词
-  preWord: Word = new Word(); //上一个复习的单词
+  preWord: Word = new Word(0,"","",0); //上一个复习的单词
   studied: number = 0; //已学习的单词数量
   showZH: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private dataService: DataService) { }
 
   /**
    * 进入下一个单词的学习的方法
@@ -28,6 +28,10 @@ export class ReviewComponent implements OnInit {
     this.currentWords = this.getStudyWords(this.studied);
     console.log(this.currentWords);
     this.showZH = false;
+    if(this.words.length > 0 && this.studied >= this.words.length - 1) {
+      this.studied = 0;
+      console.log(this.words);
+    }
   }
 
   /**
@@ -122,11 +126,10 @@ export class ReviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.words = mockWords;
+
+    this.words = this.dataService.currWords;
+    console.log(this.words);
     this.currentWords = this.getStudyWords(this.studied);
-    this.preWord.en = "";
-    this.preWord.zh = "";
-    console.log(this.currentWords);
   }
 
 }
