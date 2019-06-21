@@ -6,7 +6,7 @@
 
 <struts>
     <constant name="struts.locale" value="zh_CN"/>
-    <constant name="struts.i18n.encoding" value="GBK"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
     <!--开启动态方法。要实现零配置，就是需要动态方法调用。-->
     <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
